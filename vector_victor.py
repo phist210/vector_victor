@@ -60,18 +60,18 @@ def vector_mean(*args):
     new_vector = [len(arg) == len(args[0]) for arg in args]
     if sum(new_vector) != len(args):
         raise ShapeError
-    return [sum(x)/len(x) for x in zip(*args)]
+    return ([sum(item)/len(args) for item in zip(*args)])
 
 
 def magnitude(vector):
     return math.sqrt(sum(x**2 for x in vector))
 
 
-# print(shape_vectors(m))
-# print(vector_add(v, w))
-# print(vector_sub(v, w))
-# print(vector_sum(v, y, u, w, z))
-# print(dot(w, y))
-# print(vector_multiply(v, 0.5))
-# print(vector_mean(v, w))
-# print(magnitude(m))
+print(shape_vectors(m))
+print(vector_add(v, w))
+print(vector_sub(v, w))
+print(vector_sum(v, y, u, w, z))
+print(dot(w, y))
+print(vector_multiply(v, 0.5))
+print(vector_mean(v, w))
+print(magnitude(m))

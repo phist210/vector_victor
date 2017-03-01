@@ -107,6 +107,11 @@ def test_vector_mean():
     """
     assert vector_mean(m, n) == [4, 2]
     assert vector_mean(v, w) == [0.5, 2.5, 2]
+    """
+    nosetests finds its only error here  ^^^
+    where 2 is returned as a float.
+    However, if changed to 2.0, the error persists.
+    """
     assert are_equal(vector_mean(v, w, u)[0], 2 / 3)
     assert are_equal(vector_mean(v, w, u)[1], 2)
     assert are_equal(vector_mean(v, w, u)[2], 5 / 3)
