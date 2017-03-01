@@ -29,9 +29,12 @@ def vector_add(v1, v2):
         return [sum(x) for x in zip(v1, v2)]
     else:
         raise ShapeError
+    #  or simply return vector_sum(v1, v2)
 
 
 def vector_sub(v1, v2):
+    #  or >>> return vector_sum(v1, vector_multiply(v2, -1)) <<< which adds the
+    #  negative to the left side
     if shape_vectors(v1) == shape_vectors(v2):
         return [v1_item - v2_item for v1_item, v2_item in zip(v1, v2)]
     else:
@@ -40,16 +43,16 @@ def vector_sub(v1, v2):
 
 def vector_sum(*args):
     new_vector = [len(arg) == len(args[0]) for arg in args]
-    if sum(new_vector) != len(args):
-            raise ShapeError
-    return [sum(x) for x in zip(*args)]
+    if all(new_vector):
+        return [sum(x) for x in zip(*args)]
+    raise ShapeError
 
 
 def dot(*args):
     new_vector = [len(arg) == len(args[0]) for arg in args]
-    if sum(new_vector) != len(args):
-        raise ShapeError
-    return sum([(a * b) for (a, b) in zip(*args)])
+    if all(new_vector):
+        return sum([(a * b) for (a, b) in zip(*args)])
+    raise ShapeError
 
 
 def vector_multiply(vector, multiplier):
@@ -58,9 +61,9 @@ def vector_multiply(vector, multiplier):
 
 def vector_mean(*args):
     new_vector = [len(arg) == len(args[0]) for arg in args]
-    if sum(new_vector) != len(args):
-        raise ShapeError
-    return ([sum(item)/len(args) for item in zip(*args)])
+    if all(new_vector):
+        return ([sum(item)/len(item) for item in zip(*args)])
+    raise ShapeError
 
 
 def magnitude(vector):
